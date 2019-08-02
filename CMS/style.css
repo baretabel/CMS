@@ -1,0 +1,117 @@
+@font-face{
+    font-family: "robot";
+    src:url('roboto/Roboto-Regular.ttf');
+}
+.vet{
+    position: absolute;
+    top: 20%;
+    left: 42%;
+    text-align: center;
+    background: #94b3bb62;
+    padding: 3%;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 6px;
+    margin-bottom: 5%;
+}
+header{font-family:robot;
+
+    background: #94b3bb62;
+    height: 40px;
+    border: 1px solid rgba(0,0,0,0.3);
+}
+.cont{
+    padding: 5px;
+    float:right;
+    
+}
+input{
+    font-family:robot;
+background: rgba(0,0,0,0.3);
+border-radius: 4px; 
+
+height: 25px;
+}
+button{
+    font-family:robot;
+    border-radius: 4px; 
+    background: #94b3bb62;
+    height: 30px;
+    width: 150px
+}
+html {
+    height: 100%;
+  }
+body{
+	height: 100%;
+	font-family:robot;
+	padding:0px; 
+	margin:0px;
+	overflow-y:scroll;
+	background: url(diagmonds_@2X.png); /* Old browsers */
+	
+}
+.nav
+{width: 15%;
+    height: 100%;
+ background: #94b3bbcc;
+ border: 1px solid rgba(0,0,0,0.3);
+float: right;
+text-align: center;
+
+}
+.inter{
+    width: 70%;
+        height: 85%;
+        position: absolute;
+        top:15%;
+left:8%;
+     background: #94b3bbcc;
+     border: 1px solid rgba(0,0,0,0.3); 
+     text-align: center;
+}
+
+select{
+    
+background: rgba(0,0,0,0.3);
+border-radius: 4px; 
+height: 25px;
+}.full{
+    width: 95%!important;
+}.champ{
+padding-top:15%;
+}.zon{
+    margin-top: 2%;
+    font-family:robot;
+    background: rgba(0,0,0,0.3);
+    border-radius: 4px; 
+    width: 95%;
+    height:80%;
+    font-size: 18px;
+}.tit{
+    margin-top: 3%;
+    font-size: 18px;
+}
+.tit::placeholder {
+    color: black;
+  }
+  .zon::placeholder {
+    color: black;
+  }
+  .tab{
+    width: 70%;
+        height: 85%;
+        position: absolute;
+        top:15%;
+left:15%;
+     background: #94b3bbcc;
+     border: 1px solid rgba(0,0,0,0.3); 
+     text-align: center;
+     margin-bottom: 3%;
+}
+table{
+    margin-left: 6%;
+    width: 90%;
+    text-align: center;
+    border-spacing: 15px;
+}
+/*Vider le cache*/

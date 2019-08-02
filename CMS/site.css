@@ -1,0 +1,65 @@
+@font-face{
+    font-family: "robot";
+    src:url('roboto/Roboto-Regular.ttf');
+}
+html {
+    height: 100%;
+  }
+body{
+	height: 100%;
+	font-family:robot;
+	padding:0px; 
+	margin:0px;
+	overflow-y:scroll;
+	 /* Old browsers */
+     background: url(fond.jpg);
+}
+header{
+    
+    font-family:robot;
+text-align: center;
+    background:linear-gradient(135deg, #363636,#555555 30%, #9a9a9a); 
+    height:200px;
+    background-size: contain;
+    border: 1px solid rgba(0,0,0,0.3);
+}
+  header h1{
+    font-size: 56px;
+}.card{
+    margin:3%;
+    text-align:center;
+    background: #9a9a9a;
+    width: 250px;
+    height: 300px;
+    border-radius: 5px; 
+    
+}
+button{
+        font-family:robot;
+        border-radius: 4px; 
+        background: #555555;
+        height: 30px;
+        width: 150px
+    }
+    .cont{
+        display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: 80%;
+	margin: auto;
+	margin-top: 2%;
+	margin-bottom: 2%;
+    }
+    .art{
+        margin-top: 3%;
+        text-align:center;
+        background: #9a9a9a;
+        position: absolute;
+        left:25%;
+        width: 50%;
+        height: auto;
+        border-radius: 5px; 
+        margin-bottom: 3%;
+    }.txt{
+        margin:50px;
+    }

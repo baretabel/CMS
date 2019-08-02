@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js"></script>
+    <script type="text/javascript">
+        $().ready(function () {
+            $("#form").validate({
+                rules: {
+                    mdp1: {
+                        required: true
+                    },
+                    pseudo: {
+                        required: true
+                    },
+                    mail: {
+                        required: true,
+                        mail: true
+                    },
+                    mdp2: {
+                        required: true,
+                        equalTo: "#form input[name=’mdp1]’"
+                    }
+                },
+                messages: {
+                    mdp1: "<br><ob>Veuillez fournir un mot de passe</ob>",
+                    pseudo: "<br><ob>Veuillez fournir un pseudo</ob>",
+                    mail: "<br><ob>L'email est incorrect</ob>",
+                    mdp2: "<br><ob>Les mots de passe doivent être identique</ob>",
+                }
+            });
+            
+        })
+    </script>
+
+</head>
+
+<body>
+
+    <header>
+        <div class="cont">
+            <form class="fo" action="login.php" method="post">
+                <input type="text" name="login" placeholder="Nom d'utilisateur" required="required" />
+                <input type="password" name="pwd" placeholder="Mot de passe" required="required" />
+                <button type="submit" class="btn btn-primary btn-block btn-large">Connecter</button></form>
+           
+        </div>
+    </header>
+
+    <div class="vet">
+        <h1>S'inscrire <br>pour continuer</h1>
+        <form method="post" action="membres.php" id="form">
+            E-mail:<br>
+            <input type="email" name="mail" required="required" /><br>
+            <br>Pseudo:<br>
+            <input type="text" name="pseudo" required="required" /><br>
+
+
+            <br>Mot de passe:<br>
+            <input type="password" name="mdp1" required="required" /><br><br>
+            Mot de passe (confirmation):<br>
+            <input type="password" name="mdp2" required="required" required=""><br><br>
+
+            <button type="submit" class="btn btn-primary btn-block btn-large"
+                style="margin-bottom: 5%">Confirmez</button>
+        </form>
+    </div>
+</body>
+
+</html>
