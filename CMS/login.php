@@ -1,64 +1,36 @@
 <?php
 $servername = "localhost";
-$username = "VendeurVendu";
-$password = "Simplon974!";
-$dbname = "CMS";
-$conn = new mysqli($servername, $username, $password, $dbname);
-$conn->set_charset('UTF8');       
-	   $sql = "SELECT ID, Pseudo, Pass, Role  FROM Compte  ";
-	   
-       $result = $conn->query($sql);
-       while($row = $result->fetch_assoc()) {
-           // On définit un login et un mot de passe de base pour tester notre exemple. Cependant, vous pouvez très bien interroger votre base de données afin de savoir si le visiteur qui se connecte est bien membre de votre site
-           $login_valide = $row['Pseudo'];
-           $pwd_valide = $row['Pass'];
-           $rol=$row['Role'];
-           $id=$row['ID'];
-//echo ($login_valide);
-      
-session_start ();
-$_SESSION['val']= $_POST['login'];
-$_SESSION['rol']= $rol;
-$_SESSION['id']= $id;
+$username = "root";
+$password = "";
+$dbname = "cms";
+$mail=$_POST['login'];
+$mdp=$_POST['pwd'];
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
 
-if($_POST['login']==$login_valide ){
-	$login_v=$_POST['login'];
-	echo($login_v);
-	
-	
-	if($_POST['pwd']==$pwd_valide ){
-		$pwd_v = $_POST['pwd'];
-		echo($pwd_v);
-	
-	}
-}}
-	$_SESSION['log']=$login_v;
-// on teste si nos variables sont définies
-if (isset($_POST['login']) && isset($_POST['pwd'])) {
-	$log=$_POST['login'];
-	
+//  Récupération de l'utilisateur et de son pass hashé
+$req = $conn->prepare("SELECT ID, Pass, Pseudo, Role FROM compte WHERE Email = '$mail'");
+$req->execute();
+$resultat = $req->fetch();
 
-	// on vérifie les informations du formulaire, à savoir si le pseudo saisi est bien un pseudo autorisé, de même pour le mot de passe
-	if ($login_v == $_POST['login'] && $pwd_v == $_POST['pwd']) {
-		// dans ce cas, tout est ok, on peut démarrer notre session
+// Comparaison du pass envoyé via le formulaire avec la base
 
-		// on la démarre :)
-		
-		// on enregistre les paramètres de notre visiteur comme variables de session ($login et $pwd) (notez bien que l'on utilise pas le $ pour enregistrer ces variables)
-		$_SESSION['login'] = $_POST['login'];
-		
-		// on redirige notre visiteur vers une page de notre section membre
-		echo ('connecté');
-		header('Location: CMS.php');
-	}
-	else {
-		// Le visiteur n'a pas été reconnu comme étant membre de notre site. On utilise alors un petit javascript lui signalant ce fait
-		echo '<body onLoad="alert(\'Membre non reconnu...\')">';
-		// puis on le redirige vers la page d'accueil
-		echo '<meta http-equiv="refresh" content="0;URL=home.php">';
-	}
+
+if (!$resultat)
+{
+    echo 'Mauvais identifiant ou mot de passe !';
 }
-else {
-	echo 'Les variables du formulaire ne sont pas déclarées.';
-} 
-?>
+else
+{
+    if ($resultat['Pass']==$mdp) {
+        session_start();
+        $_SESSION['id'] = $resultat['ID'];
+        $_SESSION['login'] = $resultat['Pseudo'];
+        $_SESSION['rol'] = $resultat['Role'];
+        header('location: autor.php');
+    }
+    else {
+        echo 'Mauvais identifiant ou mot de passe !';
+    }
+}

@@ -1,17 +1,25 @@
 <?php
-
 $servername = "localhost";
-$username = "VendeurVendu";
-$password = "Simplon974!";
-$dbname = "CMS";
-
+$username = "root";
+$password = "";
+$dbname = "cms";
+$cat=$_POST['cat'] ;
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-    $stmt = $conn->prepare("SELECT ID, Type,  Couv,   Auteur, Titre, etat  FROM Articles WHERE etat='Publié' AND Type='Article' "); 
+
+    $req = $conn->prepare("SELECT DISTINCT Catégories  FROM articles "); 
+    $req->execute();
+if(empty($cat) || $cat=='Animaux'){
+    $cat='Animaux' ;
+    $stmt = $conn->prepare("SELECT ID, Type,  Couv,   Auteur, Titre, etat  FROM articles WHERE etat='Publié' AND Type='Article' "); 
     $stmt->execute();
+  }  else{
+   $stmt = $conn->prepare("SELECT ID, Type,  Couv,   Auteur, Titre, etat  FROM articles WHERE etat='Publié' AND Type='Article' AND Catégories='$cat' "); 
+    $stmt->execute();
+  }
+    
     
 
     // vérifier avec phpmyadmin
@@ -34,6 +42,15 @@ try {
 <header>
         <h1> L'animalerie</h1>
         <h4> Blog sur les animaux!!!</h4>
+       <form action="Site.php" method="post"> <div><select name="cat">
+            <?php
+            echo "<option value=\"Animaux\" selected=\"selected\">Animaux</option>";
+            while($result=$req->fetch()){
+                echo "<option value=\"".$result['Catégories']."\">".$result['Catégories']."</option>";
+            }
+            ?>
+        </select>
+        <button type="submit" class="pet">>></button></form></div>
     </header>
     <div class="cont">
     <?php

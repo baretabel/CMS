@@ -113,5 +113,33 @@ table{
     width: 90%;
     text-align: center;
     border-spacing: 15px;
+}.cen{
+    width: 70%;
+        height: 85%;
+        position: absolute;
+        top:15%;
+left:15%;
+     background: #94b3bbcc;
+     border: 1px solid rgba(0,0,0,0.3); 
+     text-align: center;
+     margin-bottom: 3%;
+    display: flex !important;
+justify-content: center;
+flex-wrap: wrap;
+
+}.vis{
+    display:none;
 }
+.for{
+    width: 25%;
+    height:80%;
+    
+    margin:auto;
+}
+.case{
+    width: 100%;
+    height:100%;
+    font-size:26px;
+}
+
 /*Vider le cache*/

@@ -1,16 +1,15 @@
 <?php
 session_start();
 $servername = "localhost";
-$username = "VendeurVendu";
-$password = "Simplon974!";
-$dbname = "CMS";
-
+$username = "root";
+$password = "";
+$dbname = "cms";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-    $stmt = $conn->prepare("SELECT ID, Catégories, Date, Auteur, Titre FROM Articles "); 
+    $stmt = $conn->prepare("SELECT ID, Catégories, Date, Auteur, Titre FROM articles "); 
     $stmt->execute();
 
     // vérifier avec phpmyadmin

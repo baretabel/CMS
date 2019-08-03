@@ -1,9 +1,9 @@
 <?php
 
 $servername = "localhost";
-$username = "VendeurVendu";
-$password = "Simplon974!";
-$dbname = "CMS";
+$username = "root";
+$password = "";
+$dbname = "cms";
 $id=$_POST['id'];
 $type=$_POST['type'];
 $couv=$_POST['img'];
@@ -22,7 +22,7 @@ try {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
     
-    $stmt = $conn->prepare("UPDATE Articles SET Type='$type', Couv='$couv', Catégories='$cat', Date='$date', Auteur='$atr', Titre='$titre', Texte='$text', etat='$etat' WHERE ID='$id'"); 
+    $stmt = $conn->prepare("UPDATE articles SET Type='$type', Couv='$couv', Catégories='$cat', Date='$date', Auteur='$atr', Titre='$titre', Texte='$text', etat='$etat' WHERE ID='$id'"); 
     $stmt->execute();    
     header('location: up.php');
 

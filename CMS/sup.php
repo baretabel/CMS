@@ -1,14 +1,14 @@
 <?php
 
 $servername = "localhost";
-$username = "VendeurVendu";
-$password = "Simplon974!";
-$dbname = "CMS";
+$username = "root";
+$password = "";
+$dbname = "cms";
 $id=$_POST['sup'];
 $conn = new mysqli($servername, $username, $password, $dbname);
        
     
-            $sqli = "DELETE FROM Articles WHERE ID=$id";
+            $sqli = "DELETE FROM articles WHERE ID=$id";
             $res=$conn->query($sqli);
             header('Location: up.php'); 
         
